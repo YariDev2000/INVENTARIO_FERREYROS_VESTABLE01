@@ -54,7 +54,6 @@ function uploadFiles(formObject) {
       formObject.serie,
       formObject.numeroParte,
       formObject.almacen,
-      formObject.responsable,
       formObject.ubicacion,
       fileName,
       fileUrl]);
@@ -104,7 +103,6 @@ function editarUsuario (form) {
     form.serie,
     form.numeroParte,
     form.almacen,
-    form.responsable,
     form.ubicacion
   ]])
   return 'Usuario Editado'
@@ -137,8 +135,8 @@ function borrarUsuario(codigodeinventario) {
     serieT = rowValues[6];
     numeroParteT = rowValues[7];
     almacenT = rowValues[8];
-    responsableT = rowValues[9];
-    ubicacionT = rowValues[10];
+   
+    ubicacionT = rowValues[9];
 
     console.log(fila);
 
@@ -153,11 +151,9 @@ function borrarUsuario(codigodeinventario) {
       serieT,
       numeroParteT,
       almacenT,
-      responsableT,
       ubicacionT,
       new Date()
       ]);
 
     sheetUsuarios.deleteRow(fila); 
   }
-
