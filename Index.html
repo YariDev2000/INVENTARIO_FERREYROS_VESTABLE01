@@ -19,6 +19,9 @@
     .container{
      
     }
+    .col-3 {
+      margin: 1%;
+    }
     .button-edit{
       color: #86A3C2;
     }
@@ -58,17 +61,24 @@
         <thead>
           <tr> 
             <th>Código de Inventario</th>
+            
+            <th>Código Alterno</th>
             <th>Descripción</th>
-            <th>Tipo de Activo</th>
-            <th>Fecha</th>
-            <th>Modelo</th>
-            <th>Número de Serie</th>
+
             <th>Número de Parte</th>
-            <th>Almacén</th>
-            <th>Ubicación</th>
+            <th>Número de Serie</th>
+
+            <th>Modelo</th>
             <th>Cantidad</th>
-            <th>Responsable</th>
+
+            <th>Ubicación</th>
+            
+            <th>Almacén</th>
+            
+            <th>Fecha</th>
+
             <th>Acciones</th>
+            <th>Imagen</th>
           </tr>
         </thead>
 
@@ -81,21 +91,28 @@
       <template id="rowTemplate"> 
         <tr> 
           <td class="template-codigodeinventario"></td>
-          <td class="template-descripcion"></td>
           <td class="template-tipodeactivo"></td>
-          <td class="template-fecha"></td>
-          <td class="template-modelo"></td>
-          <td class="template-numerodeserie"></td>
+          <td class="template-descripcion"></td>
           <td class="template-numerodeparte"></td>
-          <td class="template-almacen"></td>
-          <td class="template-ubicacion"></td>     
+          <td class="template-numerodeserie"></td>
+          <td class="template-modelo"></td>
           <td class="template-cantidad"></td>
-          <td class="template-responsable"></td>
+
+          <td class="template-ubicacion"></td>  
+
+          <td class="template-almacen"></td>
+
+          <td class="template-fecha"></td>
+             
+          
           <td class="template-acciones"> 
             <i class="bi bi-pencil-square button-edit me-2" role="button" onclick = "editarUsuarioModal(this)"></i> 
             <i class="bi bi-trash-fill button-delete me-2" role="button" onclick = "borrarUsuarioModal(this)" 
             id="borrarUsuario"></i> 
           </td>
+
+          <td class="template-imagen"></td>
+
         </tr>
       </template>
 
@@ -114,26 +131,26 @@
             <form name = "myForm" id="myForm" onsubmit="handleFormSubmit(this)">
     
               <div class="row mb-6">
-                <input type="text" class="form-control" id="codigodeinventario" name="codigodeinventario" placeholder="Codigo de invnetario del activo a ingresar" hidden>
+                <input type="text" class="form-control" id="codigodeinventario" name="codigodeinventario" placeholder="Codigo de inventario de herramienta a ingresar" hidden>
               </div>
 
               <div class="row mb-6">
                 
                 <div class = "col">
                   <label for="descripcion">Descripcion</label>
-                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion del activo a ingresar" required>
+                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion de herramienta a ingresar" required>
                 </div>
 
                 <div class = "col">
                   <label for = "tipo">Tipo de Activo</label>
-                  <input class= "form-control" list="dlTipo" id = "tipo" name = "tipo" placeholder="Seleccione un tipo de activo" required>
+                  <input class= "form-control" list="dlTipo" id = "tipo" name = "tipo" placeholder="Seleccione un tipo de herramienta" required>
 
                   <datalist id = "dlTipo">
                     <option value = ""> Seleccione el tipo de activo </option>
-                    <option value = "INSTRUMENTO"> INSTRUMENTO </option>
-                    <option value = "COMPONENTE"> COMPONENTE </option>
-                    <option value = "EQUIPO"> EQUIPO </option>
-                    <option value = "HERRAMIENTA"> HERRAMIENTA </option>
+                    <option value = "INSTRUMENTOS"> INSTRUMENTOS </option>
+                    <option value = "COMPONENTES"> COMPONENTES </option>
+                    <option value = "EQUIPOS"> EQUIPOS </option>
+                    <option value = "HERRAMIENTAS"> HERRAMIENTAS </option>
 
                   </datalist>
                 </div>
@@ -145,7 +162,7 @@
               <div class="row mb-6">
                 <div class="col">
                 <label for="cantidad">Cantidad</label>
-                <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ingresar el número de activos" required>
+                <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ingresar el número de herramienta" required>
                 </div>
 
                 <div class="col">
@@ -156,24 +173,24 @@
 
               <div class="row mb-6">     
                   <label for="modelo">Modelo</label>
-                  <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Ingresar el modelo del activo" required>
+                  <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Ingresar el modelo de herramienta" required>
               </div>
 
               <div class="row mb-6">
                 <div class="col">
                 <label for="serie">Serie</label>
-                <input type="text" class="form-control" id="serie" name="serie" placeholder="Ingresar la serie del activo" required>
+                <input type="text" class="form-control" id="serie" name="serie" placeholder="Ingresar la serie de herramienta" required>
               </div>
               <div class="col">
                 <label for="numeroParte">Número de Parte</label>
-                <input type="text" class="form-control" id="numeroParte" name="numeroParte" placeholder="Ingresar el número de parte del activo" required>
+                <input type="text" class="form-control" id="numeroParte" name="numeroParte" placeholder="Ingresar el número de parte de herramienta" required>
               </div>
             </div>
               
               <div class="row mb-6">
                 <div class="col">
                 <label for="almacen">Almacén</label>
-                  <input class="form-control" list="dlAlmacen" id="almacen" name = "almacen" placeholder="Seleccione el almacén donde se encuentra el activo" required>
+                  <input class="form-control" list="dlAlmacen" id="almacen" name = "almacen" placeholder="Seleccione el almacén donde se encuentra la herramienta" required>
                 <datalist id="dlAlmacen">  
                   <option value="">Seleccione el almacén</option>
                   <option value="CDT LIMA">CDT LIMA</option>
@@ -184,14 +201,11 @@
                   </div>
                   <div class="col">
                   <label for="ubicacion">Ubicación</label>
-                <input type="text" class="form-control" id="ubicacion" name="ubicacion" placeholder="Ingresar la ubicación del activo" required>
+                <input type="text" class="form-control" id="ubicacion" name="ubicacion" placeholder="Ingresar la ubicación de la herramienta" required>
               </div>
             </div>
 
-            <div class="row mb-6">     
-                  <label for="responsable">Responsable</label>
-                  <input type="text" class="form-control" id="responsable" name="responsable" placeholder="Ingresar el responsable de almacén" required>
-              </div>
+           
             
               <div class="row mb-6">
             <label for="FormControlFile">Imagen</label> 
